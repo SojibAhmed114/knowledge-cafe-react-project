@@ -1,5 +1,6 @@
 import {useState, useEffect } from "react";
-// import PropTypes from "prop-types";
+import Blog from "../Blog/Blog";
+
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(()=>{
@@ -8,13 +9,14 @@ const Blogs = () => {
     .then(data => setBlogs(data))
   }, [])
   return (
-    <div>
-      
+    <div className="w-2/3">
+      <p>blogs: {blogs.length}</p>
+      {blogs.map((blog) => (
+        <Blog key={blog.id} blog={blog}></Blog>
+      ))}
     </div>
-  )
+  );
 }
 
-// Blogs.propTypes = {
-//   blogs: PropTypes.array.isRequired
-// };
+
 export default Blogs
